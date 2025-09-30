@@ -18,10 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('',include("pages.urls",namespace="pages")),
     path('listings/',include("listings.urls",namespace="listings")),
     path('admin/', admin.site.urls),
-] + debug_toolbar_urls()
+] + debug_toolbar_urls() + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = "Medical Center Admin"
+admin.site.site_title = "Medical Center Admin Portal"
+admin.site.index_title = "Welcome to Medical Center Admin portal"
 
 #Put the page on the top
