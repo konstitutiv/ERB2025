@@ -18,3 +18,18 @@ district_choices = {
 "Southern": "Southern",
 "Wan Chai": "Wan Chai",
 }
+
+room_choices= {
+    "Private Rooms" : "Private Rooms",
+    "Semi-Private Rooms" : "Semi-Private Rooms",
+    "Standard (Multi-bed) Rooms" : "Standard (Multi-bed) Rooms"
+
+}
+
+night_choices = {
+    '1' : '1',
+    '2' : '2',
+    '3' : '3',
+    '4' : '4',
+    '5' : '5',
+}
