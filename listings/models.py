@@ -7,6 +7,12 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 
+class Subject(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
 class Listing(models.Model):
     doctor = models.ForeignKey(Doctor,on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)
@@ -15,11 +21,11 @@ class Listing(models.Model):
     description = models.CharField(blank=True)
     services = TaggableManager(verbose_name="Services")
     service = models.IntegerField()
-    screens = models.CharField(max_length=200)
     screen = models.IntegerField()
-    professionals = models.CharField(max_length=200)
+    professionals = models.ManyToManyField(Subject, blank=True)
     professional = models.IntegerField()
     rooms = models.CharField(max_length=2, choices=rooms_choices.items())
+    room_type = models.CharField(max_length=200, choices=room_choices.items(), default="")
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)

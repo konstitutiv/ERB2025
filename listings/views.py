@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Listing
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from . choices import district_choices, room_choices, rooms_choices
+from django.db.models import Q
 
 # Create your views here.
 
@@ -23,7 +24,7 @@ def search(request):
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
-            queryset_list = queryset_list.filter(description__icontains=keywords)
+            queryset_list = queryset_list.filter(Q(description__icontains=keywords) | Q(title__icontains=keywords) | Q(doctor__name__icontains=keywords))
     if 'district' in request.GET:
         district = request.GET['district']
         if district:
@@ -36,7 +37,10 @@ def search(request):
         room_type = request.GET['room_type']
         if room_type:
             queryset_list = queryset_list.filter(room_type__iexact=room_type)
-    context = {"listings" : queryset_list,
+    paginator = Paginator(queryset_list,3)
+    page=request.GET.get('page')
+    paged_listings=paginator.get_page(page)
+    context = {"listings" : paged_listings,
                "district_choices" : district_choices,
                "room_choices" : room_choices,
                "rooms_choices" : rooms_choices,
