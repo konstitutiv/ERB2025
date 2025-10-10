@@ -3,7 +3,7 @@ from listings.models import Listing
 # Create your views here.
 
 from doctors.models import Doctor
-from listings.choices import district_choices, room_choices, night_choices
+from listings.choices import district_choices, room_choices, rooms_choices
 
 def index(request):
 
@@ -11,7 +11,7 @@ def index(request):
     context = {'listings': listings,
                "district_choices": district_choices,
                'room_choices' : room_choices,
-               'night_choices' : night_choices
+               'rooms_choices' : rooms_choices
                }
     return render(request,'pages/index.html',context)
 

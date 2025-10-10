@@ -14,7 +14,7 @@
               tempore! Consectetur, id commodi!
             </p>
             <div class="search">
-              <form action="search.html">
+              <form action={% url "listings:search" %}>
                 <!-- Form Row 1 -->
                 <div class="form-row">
                   <div class="col-md-12 mb-3">
@@ -125,7 +125,7 @@
                 </div>
                 <hr />
                 {% comment %} edit link {% endcomment %}
-                <a href="listing.html" class="btn btn-primary btn-block"
+                <a href={% url "listings:listing" listing.id %} class="btn btn-primary btn-block"
                   >More Info</a
                 >
               </div>
