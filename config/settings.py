@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os 
+from django.contrib.messages import constants as messages
 
 load_dotenv()
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'doctors.apps.DoctorsConfig',
     'listings.apps.ListingsConfig',
+    'accounts.apps.AccountsConfig',
 
 ]
 
@@ -147,4 +149,9 @@ INTERNAL_IPS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-TAGGIT_CASE_INSENSITIVE = False
+TAGGIT_CASE_INSENSITIVE = True
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+}

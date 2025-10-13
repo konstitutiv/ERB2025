@@ -29,7 +29,7 @@ class ListingsAdminForm(forms.ModelForm):
 
 class ListingAdmin(admin.ModelAdmin):
     form = ListingsAdminForm
-    list_display = 'id','title','district','is_published','doctor','tag_list'
+    list_display = 'id','title','district','is_published','doctor','tag_list', #'display_professionals'
     list_display_links = 'id','title'
     list_filter = 'doctor',
     list_editable = ('is_published',)
