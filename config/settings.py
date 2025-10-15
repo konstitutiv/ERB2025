@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'taggit',
+    'widget_tweaks',
     'debug_toolbar',
     'pages.apps.PagesConfig',
     'doctors.apps.DoctorsConfig',
     'listings.apps.ListingsConfig',
+    'contacts.apps.ContactsConfig',
     'accounts.apps.AccountsConfig',
 
 ]
@@ -155,3 +157,17 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
 }
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'ledetele@gmail.com' # Default sender if not specified in send_mail
+
+
+#bscq cvda mawb kmap
+
